@@ -1,0 +1,90 @@
+{
+    "name": "Soil",
+    "nodes": [
+      {
+        "parameters": {
+          "path": "soil-form",
+          "formTitle": "Soil Forecast Lookup",
+          "formDescription": "Enter a city name or ZIP code to get current soil and hourly forecast for that location",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "location",
+                "placeholder": "Enter city name or ZIP code",
+                "requiredField": true
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "35c5bd7b-6a25-4377-a33e-ebf64938e194",
+        "name": "n8n Form Trigger",
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.1,
+        "position": [
+          460,
+          460
+        ],
+        "webhookId": "soil-forecast-form"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://soil-tool-e4b10c6-v5.app.beam.cloud",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer VyneHwQmIAvwNfPVZuwp860GkadAO8wH29dCERTqcX9u2G6A9kKR42AU8HKql4q4GUt_n-Yc0_4ZSSyDXzfNWA=="
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "location",
+                "value": "={{ $json.location }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "32abb614-9824-44b0-b6d1-e6a34a317407",
+        "name": "HTTP Request",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          680,
+          460
+        ]
+      }
+    ],
+    "pinData": {},
+    "connections": {
+      "n8n Form Trigger": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "active": true,
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "versionId": "26f05330-6110-4b0b-811f-9147f19a5482",
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "33431ec0c861bdf28b60be34cfddb80150607ad23a2827032c2b7ed4b1173f8d"
+    },
+    "id": "pai5FFh3ydBUrxzb",
+    "tags": []
+  }
+  

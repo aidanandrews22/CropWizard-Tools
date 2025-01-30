@@ -1,0 +1,71 @@
+Field Location,Crop Name,Planting Date,Expected Harvest Date,Acres Planted,Seed Variety,Seed Source,Row Spacing (inches),Plant Spacing (inches),Expected Yield (lbs/acre),Irrigation Method,Previous Crop,Fertilizer Type,Notes
+Field J-South,Strawberries,2024-03-15,2024-06-15,1.0,Seascape,Premium Seeds Inc,42,12,8000,Drip,Lettuce,5-5-2005,Day-neutral variety
+Field A-South,Carrots,2024-03-20,2024-06-10,1.8,Danvers Half Long,Organic Seeds Co,12,3,16000,Sprinkler,Lettuce,5-10-2005,Soil amended with compost
+Field B-East,Lettuce,2024-03-15,2024-05-01,1.2,Buttercrunch,Local Farm Supply,18,12,9000,Sprinkler,Tomatoes,3-5-2003,Cover with row fabric
+Field C-West,Peppers,2024-05-01,2024-08-01,1.5,California Wonder,Premium Seeds Inc,36,18,18000,Drip,Beans,8-8-2008,Install wind breaks
+Field B-West,Spinach,2024-03-10,2024-04-25,0.8,Bloomsdale,Organic Seeds Co,12,6,8000,Sprinkler,Broccoli,4-4-2004,Early spring planting
+Field C-East,Cucumbers,2024-05-15,2024-07-15,1.0,Straight Eight,Johnson Seeds,72,12,12000,Drip,Kale,6-6-2006,Trellis installation planned
+Field D-North,Peas,2024-03-01,2024-05-15,2.0,Sugar Snap,Local Farm Supply,24,4,6000,Sprinkler,Carrots,3-5-2003,Need support netting
+Field D-South,Broccoli,2024-03-20,2024-06-15,1.6,Green Magic,Premium Seeds Inc,30,18,8500,Sprinkler,Cucumbers,5-5-2005,Watch for cabbage moths
+Field E-Central,Zucchini,2024-05-10,2024-07-01,0.9,Black Beauty,Johnson Seeds,60,36,15000,Drip,Spinach,7-7-2007,Pollinator plants needed
+Field E-North,Kale,2024-03-15,2024-05-10,1.1,Lacinato,Organic Seeds Co,24,12,10000,Sprinkler,Peas,4-4-2004,Succession planting planned
+Field E-South,Radishes,2024-03-01,2024-04-15,0.5,Cherry Belle,Local Farm Supply,6,2,4000,Sprinkler,Lettuce,5-5-2005,Quick spring crop
+Field F-North,Onions,2024-03-15,2024-08-15,1.7,Walla Walla,Premium Seeds Inc,12,4,22000,Drip,Carrots,6-8-2006,Long season crop
+Field F-South,Garlic,2024-10-01,2025-07-01,1.3,German White,Organic Seeds Co,12,6,8000,Sprinkler,Onions,4-6-2002,Fall planting for next year
+Field G-East,Sweet Corn,2024-05-20,2024-08-10,3.0,Honey Select,Johnson Seeds,36,12,9500,Drip,Peas,10-5-2005,Succession planting every 2 weeks
+Field G-West,Green Beans,2024-05-15,2024-07-15,1.4,Provider,Local Farm Supply,24,3,7000,Sprinkler,Sweet Corn,8-10-10,Bush variety
+Field H-North,Eggplant,2024-05-10,2024-08-15,0.8,Black Beauty,Premium Seeds Inc,36,24,12000,Drip,Peppers,7-7-2007,Requires warm soil
+Field H-South,Beets,2024-03-20,2024-06-01,1.2,Detroit Dark Red,Organic Seeds Co,12,3,14000,Sprinkler,Spinach,5-10-2005,Good for spring planting
+Field I-Central,Watermelon,2024-05-25,2024-08-20,2.2,Sugar Baby,Johnson Seeds,72,48,18000,Drip,Sweet Corn,8-8-2008,Heavy feeders
+Field I-East,Cantaloupe,2024-05-20,2024-08-15,1.6,Hales Best,Premium Seeds Inc,60,36,15000,Drip,Watermelon,6-6-2006,Needs pollinator support
+Field J-West,Brussels Sprouts,2024-06-01,2024-10-15,1.0,Long Island,Local Farm Supply,30,24,6000,Sprinkler,Garlic,5-10-10,Late season harvest
+Field J-East,Swiss Chard,2024-04-01,2024-06-01,0.7,Bright Lights,Organic Seeds Co,18,12,11000,Sprinkler,Beets,4-4-2004,Cut and come again crop
+Field K-North,Cauliflower,2024-03-15,2024-06-15,1.5,Snow Crown,Johnson Seeds,30,18,9000,Drip,Broccoli,8-16-16,Cover heads when forming
+Field K-South,Cabbage,2024-03-20,2024-06-20,1.8,Early Jersey,Premium Seeds Inc,24,18,25000,Sprinkler,Peas,10-5-2005,Watch for cabbage worms
+Field L-Central,Asparagus,2024-03-01,2025-04-15,0.9,Jersey Knight,Local Farm Supply,48,12,2000,Drip,,10-10-10,Perennial crop - first year
+Field L-East,Potatoes,2024-04-15,2024-08-15,2.4,Yukon Gold,Organic Seeds Co,36,12,20000,Sprinkler,Sweet Corn,5-10-10,Hill soil as plants grow
+Field M-West,Sweet Potatoes,2024-05-25,2024-09-25,1.9,Beauregard,Johnson Seeds,36,12,18000,Drip,Beans,4-8-12,Needs warm soil
+Field M-East,Okra,2024-05-20,2024-08-15,0.6,Clemson Spineless,Premium Seeds Inc,36,12,8000,Drip,Tomatoes,5-5-2005,Heat loving crop
+Field N-North,Celery,2024-04-01,2024-07-15,1.1,Utah,Local Farm Supply,24,6,30000,Sprinkler,Lettuce,6-6-2006,Keep soil consistently moist
+Field N-South,Parsnips,2024-04-15,2024-09-15,0.8,Hollow Crown,Organic Seeds Co,18,4,12000,Sprinkler,Carrots,5-10-2005,Long season crop
+Field O-West,Rutabaga,2024-07-01,2024-10-15,1.2,American Purple Top,Premium Seeds Inc,18,6,15000,Sprinkler,Beets,5-10-2005,Fall harvest crop
+Field O-East,Kohlrabi,2024-03-15,2024-05-15,0.6,Vienna,Local Farm Supply,18,6,8000,Sprinkler,Radishes,6-6-2006,Spring planting
+Field P-North,Collards,2024-03-20,2024-05-20,1.0,Georgia,Organic Seeds Co,24,18,12000,Drip,Kale,8-8-2008,Heat tolerant greens
+Field P-South,Turnips,2024-08-01,2024-10-01,0.9,Purple Top White Globe,Johnson Seeds,12,4,10000,Sprinkler,Peas,5-10-2005,Fall crop
+Field Q-Central,Arugula,2024-03-10,2024-04-20,0.4,Rocket,Premium Seeds Inc,12,3,6000,Sprinkler,Lettuce,3-3-2003,Quick growing crop
+Field Q-East,Mustard Greens,2024-03-15,2024-05-01,0.7,Southern Giant Curled,Local Farm Supply,18,6,7500,Sprinkler,Spinach,5-5-2005,Spicy greens
+Field R-West,Leeks,2024-03-20,2024-08-20,1.1,American Flag,Organic Seeds Co,18,6,14000,Drip,Onions,6-6-2006,Long season crop
+Field R-East,Shallots,2024-03-15,2024-07-15,0.8,French Red,Johnson Seeds,12,4,6000,Drip,Garlic,4-4-2004,Gourmet crop
+Field S-North,Fennel,2024-04-01,2024-06-15,0.5,Florence,Premium Seeds Inc,18,12,8000,Sprinkler,Celery,5-10-2005,Bulbing variety
+Field S-South,Radicchio,2024-07-15,2024-09-15,0.6,Chioggia,Local Farm Supply,12,12,5000,Sprinkler,Lettuce,6-6-2006,Fall heading
+Field T-Central,Artichokes,2024-03-01,2024-08-15,1.3,Green Globe,Organic Seeds Co,48,36,4000,Drip,,8-8-2008,Perennial crop
+Field T-East,Rhubarb,2024-03-01,2025-04-15,0.7,Victoria,Johnson Seeds,48,36,12000,Drip,,10-10-10,Perennial crop
+Field U-West,Horseradish,2024-03-15,2024-10-15,0.4,Maliner Kren,Premium Seeds Inc,24,18,5000,Sprinkler,,5-5-2005,Root crop
+Field U-East,Sunchokes,2024-03-20,2024-10-01,0.8,Stampede,Local Farm Supply,36,24,15000,Drip,,4-6-2004,Native crop
+Field V-North,Ginger,2024-05-01,2024-11-01,0.3,Hawaiian,Organic Seeds Co,24,12,3000,Drip,,6-6-2006,Tropical crop
+Field V-South,Tomatillos,2024-05-15,2024-08-15,0.9,Verde,Johnson Seeds,36,24,12000,Drip,Tomatoes,8-8-2008,Need multiple plants
+Field W-Central,Ground Cherries,2024-05-10,2024-08-10,0.5,Aunt Mollys,Premium Seeds Inc,36,24,4000,Drip,Peppers,5-5-2005,Self-seeding
+Field W-East,Celeriac,2024-04-01,2024-09-15,0.7,Monarch,Local Farm Supply,18,6,16000,Sprinkler,Celery,6-6-2006,Root celery
+Field X-West,Parsley Root,2024-04-15,2024-09-01,0.6,Hamburg,Organic Seeds Co,18,4,8000,Sprinkler,Carrots,5-10-2005,Root herb
+Field X-East,Salsify,2024-04-01,2024-10-15,0.5,Mammoth Sandwich Island,Johnson Seeds,18,4,6000,Sprinkler,Parsnips,4-4-2004,Oyster plant
+Field Y-North,Endive,2024-03-15,2024-05-15,0.6,Tres Fine,Premium Seeds Inc,18,12,7000,Sprinkler,Lettuce,5-5-2005,Spring salad green
+Field Y-South,Escarole,2024-08-01,2024-10-01,0.7,Broad Batavian,Local Farm Supply,18,12,8000,Sprinkler,Endive,6-6-2006,Fall planting
+Field Z-Central,Fava Beans,2024-03-01,2024-06-15,1.4,Windsor,Organic Seeds Co,24,6,3000,Sprinkler,Peas,4-6-2004,Cool season legume
+Field Z-East,Edamame,2024-05-20,2024-08-20,1.2,BeSweet,Johnson Seeds,30,4,4500,Drip,Beans,5-5-2005,Specialty soybean
+Field AA-West,Amaranth,2024-05-15,2024-08-15,0.8,Red Garnet,Premium Seeds Inc,24,12,2000,Drip,,8-8-2008,Ancient grain
+Field AA-East,Quinoa,2024-04-15,2024-08-15,1.0,Brightest Brilliant,Local Farm Supply,24,12,2500,Drip,,6-6-2006,Cool season grain
+Field BB-North,Millet,2024-05-20,2024-09-01,1.5,Pearl,Organic Seeds Co,18,6,3000,Drip,,5-5-2005,Drought tolerant
+Field BB-South,Sorghum,2024-05-25,2024-09-15,2.0,Sweet Black,Johnson Seeds,30,6,4000,Drip,,7-7-2007,Heat tolerant
+Field CC-West,Flax,2024-04-01,2024-07-15,1.1,Golden,Premium Seeds Inc,12,3,1800,Sprinkler,,4-4-2004,Fiber crop
+Field CC-East,Buckwheat,2024-05-15,2024-08-01,1.3,Common,Local Farm Supply,18,4,2200,Sprinkler,,5-5-2005,Cover crop/grain
+Field DD-North,Safflower,2024-04-15,2024-08-15,1.8,CW99OL,Organic Seeds Co,24,6,2500,Drip,,6-6-2006,Oil seed crop
+Field DD-South,Sunflowers,2024-05-01,2024-08-15,2.2,Mammoth Grey,Johnson Seeds,36,12,3000,Drip,,8-8-2008,Bird/pollinator friendly
+Field EE-Central,Hemp,2024-05-15,2024-09-15,2.5,Fiber Star,Premium Seeds Inc,24,6,4000,Drip,,7-7-2007,Fiber variety
+Field EE-East,Stevia,2024-05-01,2024-08-15,0.4,Candy,Local Farm Supply,24,18,2000,Drip,,5-5-2005,Natural sweetener
+Field FF-West,Lemon Balm,2024-04-15,2024-07-15,0.3,Citronella,Organic Seeds Co,24,18,3000,Sprinkler,,4-4-2004,Aromatic herb
+Field FF-East,Chamomile,2024-04-01,2024-07-01,0.5,German,Johnson Seeds,18,12,1500,Sprinkler,,3-3-2003,Tea herb
+Field GG-North,Echinacea,2024-04-15,2024-08-15,0.6,Purple Coneflower,Premium Seeds Inc,24,18,2000,Sprinkler,,5-5-2005,Medicinal herb
+Field GG-South,Calendula,2024-04-01,2024-07-01,0.4,Pacific Beauty,Local Farm Supply,18,12,1800,Sprinkler,,4-4-2004,Edible flowers
+Field HH-West,Lavender,2024-04-15,2024-08-15,0.8,English,Organic Seeds Co,30,24,2500,Drip,,3-3-2003,Aromatic/medicinal
+Field HH-East,Thyme,2024-04-01,2024-07-15,0.3,German Winter,Johnson Seeds,18,12,1200,Drip,,4-4-2004,Culinary herb
+Field A-North,Tomatoes,2024-04-15,2024-07-10,2.5,Better Boy Hybrid,Johnson Seeds,48,24,25000,Drip,Peas,10-10-10,Staking needed by May 1

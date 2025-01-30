@@ -1,0 +1,112 @@
+{
+  "name": "Spreadsheet Creation Tool",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "spreadsheet-creation-form",
+        "formTitle": "Spreadsheet Creation Form",
+        "formDescription": "Provide data (in JSON) and optional columns, filename, etc. to generate a spreadsheet.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "data",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "columns",
+              "requiredField": false
+            },
+            {
+              "fieldLabel": "filename",
+              "requiredField": false
+            },
+            {
+              "fieldLabel": "sheet_name",
+              "requiredField": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "abc12345-1111-2222-3333-abcdef123456",
+      "name": "n8n Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        280,
+        400
+      ],
+      "webhookId": "spreadsheet-creation-form"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "YOUR_BEAM_ENDPOINT_URL_HERE", 
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer YOUR_TOKEN_HERE"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "data",
+              "value": "={{ $json.data }}"
+            },
+            {
+              "name": "columns",
+              "value": "={{ $json.columns }}"
+            },
+            {
+              "name": "filename",
+              "value": "={{ $json.filename }}"
+            },
+            {
+              "name": "sheet_name",
+              "value": "={{ $json.sheet_name }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "def6789-4444-5555-6666-abcdef987654",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        400
+      ]
+    }
+  ],
+  "connections": {
+    "n8n Form Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "11223344-5566-7788-99aa-bbccddeeff00",
+  "id": "spreadsheetCreationWorkflow",
+  "tags": []
+} 

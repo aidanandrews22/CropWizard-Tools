@@ -1,0 +1,92 @@
+{
+    "name": "Weather Forecast Tool",
+    "nodes": [
+      {
+        "parameters": {
+          "path": "weather-forecast-form",
+          "formTitle": "Weather Forecast Lookup",
+          "formDescription": "Enter a city name or ZIP code to get current weather and hourly forecast for your location",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "location",
+                "requiredField": true,
+                "placeholder": "Enter city name or ZIP code"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "292cb5c6-59c3-4193-b328-4ffa7dd772ef",
+        "name": "n8n Form Trigger",
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.1,
+        "position": [
+          280,
+          400
+        ],
+        "webhookId": "weather-forecast-form"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://weather-tool-e4b10c6-v5.app.beam.cloud",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer VyneHwQmIAvwNfPVZuwp860GkadAO8wH29dCERTqcX9u2G6A9kKR42AU8HKql4q4GUt_n-Yc0_4ZSSyDXzfNWA=="
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "location",
+                "value": "={{ $json.location }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "db14313e-57ac-4b63-b63c-ce4dc0ff3c7e",
+        "name": "HTTP Request",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          500,
+          400
+        ]
+      }
+    ],
+    "pinData": {},
+    "connections": {
+      "n8n Form Trigger": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "33431ec0c861bdf28b60be34cfddb80150607ad23a2827032c2b7ed4b1173f8d"
+    },
+    "tags": []
+} 

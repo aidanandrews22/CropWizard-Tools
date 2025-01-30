@@ -1,0 +1,94 @@
+{
+    "name": "Spreadsheet Ingester Tool",
+    "nodes": [
+      {
+        "parameters": {
+          "path": "spreadsheet-ingester-form",
+          "formTitle": "Google Sheets Data Ingester",
+          "formDescription": "Enter a Google Sheets URL to extract its data for LLM processing",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "sheet_url",
+                "requiredField": true,
+                "placeholder": "https://docs.google.com/spreadsheets/d/..."
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "292cb5c6-59c3-4193-b328-4ffa7dd772ef",
+        "name": "n8n Form Trigger",
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.1,
+        "position": [
+          280,
+          400
+        ],
+        "webhookId": "spreadsheet-ingester-form"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://spreadsheet-ingester-2def8a2-v2.app.beam.cloud",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer VyneHwQmIAvwNfPVZuwp860GkadAO8wH29dCERTqcX9u2G6A9kKR42AU8HKql4q4GUt_n-Yc0_4ZSSyDXzfNWA=="
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "sheet_url",
+                "value": "={{ $json.sheet_url }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "db14313e-57ac-4b63-b63c-ce4dc0ff3c7e",
+        "name": "HTTP Request",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          500,
+          400
+        ]
+      }
+    ],
+    "pinData": {},
+    "connections": {
+      "n8n Form Trigger": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "versionId": "3cbb33d9-4af8-4693-ab94-9b9ad6dcaa72",
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "33431ec0c861bdf28b60be34cfddb80150607ad23a2827032c2b7ed4b1173f8d"
+    },
+    "id": "3opZxzhGVM7bnAVM",
+    "tags": []
+} 

@@ -1,0 +1,11 @@
+Field Location,Crop Name,Planting Date,Expected Harvest Date,Acres Planted,Seed Variety,Seed Source,Row Spacing (inches),Plant Spacing (inches),Expected Yield (lbs/acre),Irrigation Method,Previous Crop,Fertilizer Type,Notes
+Field A-North,Tomatoes,2024-04-15,2024-07-10,2.5,Better Boy Hybrid,Johnson Seeds,48,24,25000,Drip,Peas,10-10-10,Staking needed by May 1
+Field A-South,Carrots,2024-03-20,2024-06-10,1.8,Danvers Half Long,Organic Seeds Co,12,3,16000,Sprinkler,Lettuce,5-10-5,Soil amended with compost
+Field B-East,Lettuce,2024-03-15,2024-05-01,1.2,Buttercrunch,Local Farm Supply,18,12,9000,Sprinkler,Tomatoes,3-5-3,Cover with row fabric
+Field C-West,Peppers,2024-05-01,2024-08-01,1.5,California Wonder,Premium Seeds Inc,36,18,18000,Drip,Beans,8-8-8,Install wind breaks
+Field B-West,Spinach,2024-03-10,2024-04-25,0.8,Bloomsdale,Organic Seeds Co,12,6,8000,Sprinkler,Broccoli,4-4-4,Early spring planting
+Field C-East,Cucumbers,2024-05-15,2024-07-15,1.0,Straight Eight,Johnson Seeds,72,12,12000,Drip,Kale,6-6-6,Trellis installation planned
+Field D-North,Peas,2024-03-01,2024-05-15,2.0,Sugar Snap,Local Farm Supply,24,4,6000,Sprinkler,Carrots,3-5-3,Need support netting
+Field D-South,Broccoli,2024-03-20,2024-06-15,1.6,Green Magic,Premium Seeds Inc,30,18,8500,Sprinkler,Cucumbers,5-5-5,Watch for cabbage moths
+Field E-Central,Zucchini,2024-05-10,2024-07-01,0.9,Black Beauty,Johnson Seeds,60,36,15000,Drip,Spinach,7-7-7,Pollinator plants needed
+Field E-North,Kale,2024-03-15,2024-05-10,1.1,Lacinato,Organic Seeds Co,24,12,10000,Sprinkler,Peas,4-4-4,Succession planting planned 

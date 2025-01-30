@@ -1,0 +1,1 @@
+This CSV file contains avocado sales data, including fields such as date, average price, total volume, and various bag types (small, large, xlarge) for the year 2015 in the Albany region. It includes both conventional avocado types and quantitative metrics for sales analysis, making it suitable for market trend analysis, agricultural economics, and inventory management studies.

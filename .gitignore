@@ -1,0 +1,9 @@
+# Ignore config and environment files at all levels
+**/config.py
+**/.env
+**/__pycache__/
+**/.mypy_cache/
+
+# Ignore these files in the root directory
+.env
+config.py
