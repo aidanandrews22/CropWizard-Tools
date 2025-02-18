@@ -1,11 +1,20 @@
 import logging
-from sentence_transformers import SentenceTransformer
-import faiss
-import numpy as np
+import os
+import dotenv
 import pandas as pd
-import re
 
-# Configure logging
+from langchain.agents.agent_types import AgentType
+from langchain_openai import ChatOpenAI
+
+from langchain_experimental.agents.agent_toolkits import create_csv_agent
+from langchain_experimental.agents import create_pandas_dataframe_agent
+
+
+# Set tokenizers parallelism to false to avoid warnings
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
+dotenv.load_dotenv()
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -22,127 +31,67 @@ class CSVAnalyzer:
         """
         logger.info(f"Initializing CSV Analyzer for files: {[path for path, _ in csv_paths]}")
         self.query = query
-        self.csv_paths = csv_paths
-        self.dataframes = {}
-        self.model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-        
-    def _load_data(self):
-        """Load CSV data into pandas DataFrames."""
-        if not self.dataframes:
-            for csv_path, _ in self.csv_paths:
-                logger.info(f"Loading CSV data from {csv_path}")
-                self.dataframes[csv_path] = pd.read_csv(csv_path)
-                logger.info(f"Loaded {len(self.dataframes[csv_path])} rows from {csv_path}")
+        # Extract just the file paths from csv_paths tuples
+        self.csv_files = [path for path, _ in csv_paths]
+        self.dfs = [pd.read_csv(path) for path in self.csv_files]
+        self.scores = {path: score for path, score in csv_paths}
+        self.agent = None
+        self._initialize_agent()
     
-    def _parse_query_to_filters(self, csv_path):
-        """Convert natural language query to DataFrame filters for a specific CSV."""
-        filters = {}
-        numbers = re.findall(r'\d+', self.query)
-        
-        df = self.dataframes[csv_path]
-        for col in df.columns:
-            col_lower = col.lower()
-            if col_lower in self.query.lower():
-                if numbers and df[col].dtype in ['int64', 'float64']:
-                    filters[col] = float(numbers[0]) if '.' in numbers[0] else int(numbers[0])
-                elif df[col].dtype == 'object':
-                    unique_vals = df[col].unique()
-                    for val in unique_vals:
-                        if str(val).lower() in self.query.lower():
-                            filters[col] = val
-                            break
-        
-        return filters
-    
-    def simple_search(self):
-        """Perform simple structured search using pandas for all CSVs."""
-        self._load_data()
-        results = {}
-        
-        for csv_path, _ in self.csv_paths:
-            filters = self._parse_query_to_filters(csv_path)
-            
-            if filters:
-                result = self.dataframes[csv_path].copy()
-                for col, val in filters.items():
-                    if isinstance(val, str):
-                        result = result[result[col].str.lower() == val.lower()]
-                    else:
-                        result = result[result[col] == val]
-                        
-                if not result.empty:
-                    results[csv_path] = result
-                    
-        return results if results else None
-    
-    def semantic_search(self, max_rows=10):
-        """Perform semantic search using pre-computed embeddings for all CSVs.
-        
-        Args:
-            max_rows (int): Maximum number of rows to return per CSV
-        """
-        self._load_data()
-        results = {}
-        
-        # Encode query once
-        query_embedding = self.model.encode([self.query], convert_to_numpy=True)
-        
-        for csv_path, csv_score in self.csv_paths:
-            # Load pre-computed embeddings
-            emb_path = csv_path.replace('_CSV', '_Embeddings').replace('.csv', '.npy')
-            embeddings = np.load(emb_path)
-            
-            # Create FAISS index
-            dimension = embeddings.shape[1]
-            index = faiss.IndexFlatL2(dimension)
-            index.add(embeddings.astype(np.float32))
-            
-            # Search with a larger k to allow for filtering
-            distances, indices = index.search(query_embedding.astype(np.float32), min(len(embeddings), max_rows * 2))
-            distances = distances[0]  # Flatten distances array
-            indices = indices[0]      # Flatten indices array
-            
-            # Convert distances to similarity scores (closer to 1 is better)
-            # FAISS returns L2 distances, so we need to convert them to similarities
-            max_distance = np.max(distances)
-            similarities = 1 - (distances / max_distance)
-            
-            # Find the highest similarity score
-            top_similarity = similarities[0]
-            
-            # Calculate dynamic threshold as 75% of top similarity
-            threshold = top_similarity * 0.75
-            
-            # Filter results that meet the threshold
-            mask = similarities >= threshold
-            filtered_indices = indices[mask][:max_rows]  # Limit to max_rows
-            filtered_similarities = similarities[mask][:max_rows]
-            
-            if len(filtered_indices) > 0:
-                # Get results and add similarity scores
-                csv_results = self.dataframes[csv_path].iloc[filtered_indices].copy()
-                csv_results['similarity_score'] = filtered_similarities
-                
-                results[csv_path] = {
-                    'data': csv_results,
-                    'relevance_score': csv_score,
-                    'num_results': len(filtered_indices)
-                }
-        
-        return results if results else None
+    def _initialize_agent(self):
+        """Initialize the LangChain CSV agent."""
+        try:
+            self.agent = create_pandas_dataframe_agent(
+                ChatOpenAI(temperature=0, model="gpt-4o-mini"),
+                *self.dfs,
+                agent_type="openai-tools",
+                verbose=True,
+                handle_parsing_errors=True,
+                allow_dangerous_code=True
+            )
+
+            ### This is the old agent that ended up not working well. It would generate inconsistent code and not work. Kept getting this error "NameError: name 'df' is not defined"
+            # self.agent = create_csv_agent(
+            #     ChatOpenAI(temperature=0, model="gpt-4o-mini"),
+            #     self.csv_files,  # Pass list of CSV files directly
+            #     verbose=True,
+            #     agent_type=AgentType.OPENAI_FUNCTIONS,
+            #     handle_parsing_errors=True,
+            #     allow_dangerous_code=True
+            # )
+            logger.info("Successfully initialized CSV agent")
+        except Exception as e:
+            logger.error(f"Error initializing CSV agent: {str(e)}")
+            raise
     
     def analyze(self):
         """Main method to analyze all CSVs based on the query.
         
         Returns:
-            dict: Results matching the query for each CSV file, with relevance scores
-                 and similarity scores for individual rows
+            dict: Results from the CSV agent's analysis
         """
-        # Try simple search first
-        results = self.simple_search()
-        
-        # If simple search fails, try semantic search
-        if results is None:
-            results = self.semantic_search()
+        try:
+            if not self.agent:
+                raise ValueError("CSV agent not initialized")
             
-        return results
+            # Run the query through the agent using invoke()
+            result = self.agent.invoke({"input": self.query})["output"]
+            logger.info("Successfully executed query through CSV agent")
+            
+            # Format the results
+            formatted_results = {}
+            for csv_path in self.csv_files:
+                formatted_results[csv_path] = {
+                    'data': {
+                        'input': self.query,
+                        'output': result
+                    },
+                    'relevance_score': self.scores[csv_path],
+                    'query': self.query
+                }
+            
+            return formatted_results
+            
+        except Exception as e:
+            logger.error(f"Error analyzing CSV data: {str(e)}")
+            raise

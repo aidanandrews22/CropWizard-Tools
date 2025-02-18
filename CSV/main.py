@@ -8,27 +8,29 @@ while True:
     sheet_urls.append(url)
 
 # Process multiple sheets
-from Workers.ingestion import Ingester
-ingester = Ingester(sheet_urls)
-processed_files = ingester.process_sheets()
+if sheet_urls:
+    from Workers.ingestion import Ingester
+    ingester = Ingester(sheet_urls)
+    processed_files = ingester.process_sheets()
 
 while True:
     print("\n\nEnter your query: ")
     user_query = input()
+    
+    if not user_query:
+        break
 
     # Find csv file example
     from Workers.find import Find
     find = Find()
-    csv_file = find.find_relevant_csv(user_query)
+    csv_files = find.find_relevant_csv(user_query)  # This returns list of (path, score) tuples
 
     # Analyze csv file example using agent
     from Workers.csv_agent import CSVAnalyzer
-    csv_analyzer = CSVAnalyzer(user_query, csv_file)
+    csv_analyzer = CSVAnalyzer(user_query, csv_files)
     results = csv_analyzer.analyze()
     print(f"\n\nExtracted results: {results}")
     
-    if not user_query:
-        break
 
 # Print summary of processed files
 print("\nProcessed files:")

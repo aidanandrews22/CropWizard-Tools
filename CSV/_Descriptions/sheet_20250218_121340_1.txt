@@ -1,0 +1,1 @@
+This CSV file contains data on the gross value of corn production in the United States from 1996 to 1998. It includes columns for commodity, category, item, measurement units (dollars per planted acre), region, country, year, and value, with a focus on agricultural economics. The data reflects the primary product grain market and uses a base survey year of 1996.
