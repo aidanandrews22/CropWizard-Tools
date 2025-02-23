@@ -1,3 +1,7 @@
+import dotenv
+
+dotenv.load_dotenv()
+
 # Google Sheets example
 print("Enter Google Sheet URLs (one per line, press Enter twice when done):")
 sheet_urls = []

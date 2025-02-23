@@ -1,6 +1,5 @@
 import logging
 import os
-import dotenv
 import pandas as pd
 
 from langchain.agents.agent_types import AgentType
@@ -13,7 +12,6 @@ from langchain_experimental.agents import create_pandas_dataframe_agent
 # Set tokenizers parallelism to false to avoid warnings
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-dotenv.load_dotenv()
 
 logging.basicConfig(
     level=logging.INFO,
