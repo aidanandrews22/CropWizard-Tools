@@ -3,6 +3,7 @@ from torch import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import os
 import pathlib
+import torch
 
 # Configure logging
 logging.basicConfig(
@@ -17,7 +18,9 @@ class Find:
         self.descriptions = {}
         self._load_descriptions()
         logger.info("Loading sentence transformer model")
-        self.model = SentenceTransformer('all-MiniLM-L6-v2')
+        # Force CPU device for sentence transformer
+        self.device = torch.device("cpu")
+        self.model = SentenceTransformer('all-MiniLM-L6-v2', device=self.device)
     
     def _load_descriptions(self):
         """Load all description files from _Descriptions folder and map them to their corresponding CSV files."""
@@ -49,8 +52,8 @@ class Find:
             list: List of tuples (csv_path, score) for relevant CSV files
         """
         logger.info(f"Finding relevant CSV for query: {query}")
-        # Encode the query
-        query_embedding = self.model.encode(query, convert_to_tensor=True)
+        # Encode the query and ensure it's on CPU
+        query_embedding = self.model.encode(query, convert_to_tensor=True).to(self.device)
         
         # Store all scores
         scores = []
@@ -60,8 +63,8 @@ class Find:
             # Split description into chunks of reasonable size
             chunks = [s.strip() for s in description.split('\n\n') if s.strip()]
             
-            # Get embeddings for all chunks
-            chunk_embeddings = self.model.encode(chunks, convert_to_tensor=True)
+            # Get embeddings for all chunks and ensure they're on CPU
+            chunk_embeddings = self.model.encode(chunks, convert_to_tensor=True).to(self.device)
             
             # Calculate similarity with each chunk
             similarities = cosine_similarity(query_embedding.unsqueeze(0), chunk_embeddings)

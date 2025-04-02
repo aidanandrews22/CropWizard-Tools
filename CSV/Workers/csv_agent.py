@@ -40,23 +40,14 @@ class CSVAnalyzer:
         """Initialize the LangChain CSV agent."""
         try:
             self.agent = create_pandas_dataframe_agent(
-                ChatOpenAI(temperature=0, model="gpt-4o-mini"),
-                *self.dfs,
-                agent_type="openai-tools",
+                llm=ChatOpenAI(temperature=0, model="gpt-4o-mini"),
+                df=[*self.dfs],
+                agent_type="tool-calling",
                 verbose=True,
-                handle_parsing_errors=True,
+                # handle_parsing_errors=True,
                 allow_dangerous_code=True
             )
 
-            ### This is the old agent that ended up not working well. It would generate inconsistent code and not work. Kept getting this error "NameError: name 'df' is not defined"
-            # self.agent = create_csv_agent(
-            #     ChatOpenAI(temperature=0, model="gpt-4o-mini"),
-            #     self.csv_files,  # Pass list of CSV files directly
-            #     verbose=True,
-            #     agent_type=AgentType.OPENAI_FUNCTIONS,
-            #     handle_parsing_errors=True,
-            #     allow_dangerous_code=True
-            # )
             logger.info("Successfully initialized CSV agent")
         except Exception as e:
             logger.error(f"Error initializing CSV agent: {str(e)}")

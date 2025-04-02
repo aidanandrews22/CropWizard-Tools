@@ -1,4 +1,16 @@
 import dotenv
+import torch
+import os
+
+from Workers.csv_agent import CSVAnalyzer
+from Workers.find import Find
+from Workers.ingestion import Ingester
+find = Find()
+
+# Disable MPS acceleration to avoid Metal framework crashes
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+# Force CPU usage instead of MPS
+device = torch.device("cpu")
 
 dotenv.load_dotenv()
 
@@ -13,7 +25,6 @@ while True:
 
 # Process multiple sheets
 if sheet_urls:
-    from Workers.ingestion import Ingester
     ingester = Ingester(sheet_urls)
     processed_files = ingester.process_sheets()
 
@@ -23,14 +34,9 @@ while True:
     
     if not user_query:
         break
-
-    # Find csv file example
-    from Workers.find import Find
-    find = Find()
+    
     csv_files = find.find_relevant_csv(user_query)  # This returns list of (path, score) tuples
-
-    # Analyze csv file example using agent
-    from Workers.csv_agent import CSVAnalyzer
+    
     csv_analyzer = CSVAnalyzer(user_query, csv_files)
     results = csv_analyzer.analyze()
     print(f"\n\nExtracted results: {results}")
