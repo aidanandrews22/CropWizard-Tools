@@ -1,0 +1,92 @@
+{
+    "name": "Template Tool",
+    "nodes": [
+      {
+        "parameters": {
+          "path": "template-form",
+          "formTitle": "Template Form",
+          "formDescription": "Enter a number to get a 'Hello world!' response",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "number",
+                "requiredField": true,
+                "placeholder": "Enter a number"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "template-form-trigger",
+        "name": "n8n Form Trigger",
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.1,
+        "position": [
+          280,
+          400
+        ],
+        "webhookId": "template-form"
+      },
+      {
+        "parameters": {
+          "method": "POST",
+          "url": "https://your-template-tool-url.app.beam.cloud",
+          "sendHeaders": true,
+          "headerParameters": {
+            "parameters": [
+              {
+                "name": "Authorization",
+                "value": "Bearer YOUR_AUTH_TOKEN_HERE"
+              }
+            ]
+          },
+          "sendBody": true,
+          "bodyParameters": {
+            "parameters": [
+              {
+                "name": "number",
+                "value": "={{ $json.number }}"
+              }
+            ]
+          },
+          "options": {}
+        },
+        "id": "template-http-request",
+        "name": "HTTP Request",
+        "type": "n8n-nodes-base.httpRequest",
+        "typeVersion": 4.2,
+        "position": [
+          500,
+          400
+        ]
+      }
+    ],
+    "pinData": {},
+    "connections": {
+      "n8n Form Trigger": {
+        "main": [
+          [
+            {
+              "node": "HTTP Request",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "HTTP Request": {
+        "main": [
+          []
+        ]
+      }
+    },
+    "active": false,
+    "settings": {
+      "executionOrder": "v1"
+    },
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "template-instance-id"
+    },
+    "tags": []
+} 
