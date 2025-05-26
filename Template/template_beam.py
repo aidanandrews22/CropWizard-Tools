@@ -11,7 +11,7 @@ from typing import Any, Dict
     cpu=1,
     memory="2Gi",
     image=Image(python_version="python3.10").add_python_packages([
-        "requests==2.31.0"
+        "requests==2.31.0",
     ]),
     timeout=30,
     keep_warm_seconds=60 * 3

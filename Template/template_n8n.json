@@ -30,13 +30,13 @@
       {
         "parameters": {
           "method": "POST",
-          "url": "https://your-template-tool-url.app.beam.cloud",
+          "url": "https://template-tool-4ea8c41-v1.app.beam.cloud",
           "sendHeaders": true,
           "headerParameters": {
             "parameters": [
               {
                 "name": "Authorization",
-                "value": "Bearer YOUR_AUTH_TOKEN_HERE"
+                "value": "Bearer VyneHwQmIAvwNfPVZuwp860GkadAO8wH29dCERTqcX9u2G6A9kKR42AU8HKql4q4GUt_n-Yc0_4ZSSyDXzfNWA=="
               }
             ]
           },
